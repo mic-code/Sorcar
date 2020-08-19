@@ -22,7 +22,7 @@ class ScDecalSlice(Node, ScObjectOperatorNode):
         )
     
     #https://www.blender.org/forum/viewtopic.php?p=105783
-    def AssembleOverrideContextForView3dOps(self):        
+    def AssembleOverrideContextForView3dOps(self):
         for oWindow in bpy.context.window_manager.windows:
             oScreen = oWindow.screen
             for oArea in oScreen.areas:
@@ -41,8 +41,9 @@ class ScDecalSlice(Node, ScObjectOperatorNode):
         o.select_set(state=True)
 
         oContextOverride = self.AssembleOverrideContextForView3dOps()
-        bpy.ops.machin3.slice_decal(oContextOverride,'INVOKE_REGION_WIN')
+        #bpy.ops.machin3.slice_decal(oContextOverride,'INVOKE_REGION_WIN',alt = True)
+        bpy.ops.machin3.slice_decal(oContextOverride, alt = True)
+
         original.select_set(state=True)
         bpy.context.view_layer.objects.active = original
         bpy.ops.object.join()
-        #bpy.ops.machin3.slice_decal('INVOKE_REGION_WIN')
